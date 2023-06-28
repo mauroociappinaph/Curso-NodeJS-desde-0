@@ -1,13 +1,14 @@
-const getById = (id) => {
+const getById = (id, callback) => {
     const usuario = {
         id,
         nombre: "Mauroo"
-
     };
-
     setTimeout(() => {
-        console.log(usuario);
-    }, 1000)
-}
+        callback(usuario);
+    }, 1000);
+};
 
-getById(1);
+
+getById(10, (usuario) => {
+    console.log(`Hola ${usuario.nombre}`);
+});
