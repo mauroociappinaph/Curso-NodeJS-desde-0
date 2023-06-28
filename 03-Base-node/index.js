@@ -1,24 +1,18 @@
 const fs = require("fs");
 
-/*Este código importa el módulo fs de la 
-biblioteca estándar de Node.js y lo 
-asigna a una variable constante llamada fs. 
-El módulo fs proporciona funciones para 
-interactuar con el sistema de archivos en 
-JavaScript.
-*/
-
-//? Hacer tabla del 5 e imprimir en la consola
-
 const base = 5;
 let salida = "";
 
 for (let i = 1; i <= 10; i++) {
+  salida += `${base} * ${i} = ${base * i}\n`;
   console.log(`${base} * ${i} = ${base * i}`);
 }
 
-fs.writeFile("tabla.txt", salida, (err) => {
-  if (err) throw err;
+console.log(salida);
 
-  console.log("Archivo tabla.txt creado");
-});
+try {
+  fs.writeFileSync("tabla.txt", salida);
+  console.log("tabla.txt creado");
+} catch (err) {
+  console.error("Error al escribir en tabla.txt:", err);
+}
